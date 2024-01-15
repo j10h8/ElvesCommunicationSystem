@@ -1,7 +1,8 @@
-﻿string[] input = File.ReadAllLines("..\\..\\..\\Input\\TestInput.txt");
+﻿// Read values from input file and store in array 
+string[] input = File.ReadAllLines("..\\..\\..\\Input\\ExampleInput.txt");
 
-int registerXValue = 1;
-int numberOfCycles = 1;
+#region Determine number of cycles that input generates, and create array based on result 
+int numberOfCycles = 0;
 
 for (int h = 0; h < input.Length; h++)
 {
@@ -16,8 +17,11 @@ for (int h = 0; h < input.Length; h++)
 }
 
 int[] registerX = new int[numberOfCycles];
+#endregion
 
+#region Iterate over input to generate X values for CPU register 
 int cycle = 0;
+int registerXValue = 1;
 
 for (int i = 0; i < input.Length; i++)
 {
@@ -45,14 +49,34 @@ for (int i = 0; i < input.Length; i++)
         cycle++;
     }
 }
+#endregion
 
-registerX[cycle] = registerXValue;
+#region Calculate requested value 
+int sumOfSignalStrengths = 0;
+int j = 19;
 
-foreach (int value in registerX)
+while (j < 220)
 {
-    Console.Write(value + " ");
+    sumOfSignalStrengths += (registerX[j] * (j + 1));
+
+    j = j + 40;
+}
+#endregion
+
+#region Print result to console 
+for (int c = 0; c < registerX.Length; c++)
+{
+    Console.Write($"{c + 1} {registerX[c]} \n");
 }
 
 Console.Write("\n");
 Console.WriteLine("Press any key to exit.");
+Console.WriteLine(registerX[19] + "\n");
+Console.WriteLine(registerX[59] + "\n");
+Console.WriteLine(registerX[99] + "\n");
+Console.WriteLine(registerX[139] + "\n");
+Console.WriteLine(registerX[179] + "\n");
+Console.WriteLine(registerX[219] + "\n");
+Console.WriteLine(sumOfSignalStrengths + "\n");
 Console.ReadKey();
+#endregion
