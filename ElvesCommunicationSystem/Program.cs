@@ -1,2 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿
+string[] testInput = File.ReadAllLines("..\\..\\..\\Input\\TestInput.txt");
+
+foreach (string line in testInput)
+{
+    Console.WriteLine(line);
+}
+
+Console.WriteLine("Press any key to exit.");
+Console.ReadKey();
