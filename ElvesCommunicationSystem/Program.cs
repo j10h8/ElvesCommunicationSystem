@@ -64,19 +64,21 @@ while (j < 220)
 #endregion
 
 #region Print result to console 
-for (int c = 0; c < registerX.Length; c++)
-{
-    Console.Write($"{c + 1} {registerX[c]} \n");
-}
+//for (int c = 0; c < registerX.Length; c++)
+//{
+//    Console.WriteLine($"{c + 1} {registerX[c]}");
+//}
 
 Console.Write("\n");
+Console.WriteLine("  " + registerX[19] * 20);
+Console.WriteLine("  " + registerX[59] * 60);
+Console.WriteLine("  " + registerX[99] * 100);
+Console.WriteLine("  " + registerX[139] * 140);
+Console.WriteLine("  " + registerX[179] * 180);
+Console.WriteLine("  " + registerX[219] * 220);
+Console.WriteLine("+_____");
+Console.WriteLine(" " + sumOfSignalStrengths);
+Console.Write("\n");
 Console.WriteLine("Press any key to exit.");
-Console.WriteLine(registerX[19] + "\n");
-Console.WriteLine(registerX[59] + "\n");
-Console.WriteLine(registerX[99] + "\n");
-Console.WriteLine(registerX[139] + "\n");
-Console.WriteLine(registerX[179] + "\n");
-Console.WriteLine(registerX[219] + "\n");
-Console.WriteLine(sumOfSignalStrengths + "\n");
 Console.ReadKey();
 #endregion
