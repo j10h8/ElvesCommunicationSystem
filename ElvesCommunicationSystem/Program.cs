@@ -1,29 +1,56 @@
 ﻿string[] input = File.ReadAllLines("..\\..\\..\\Input\\TestInput.txt");
 
-for (int cycle = 0; cycle < input.Length; cycle++)
+int registerXValue = 1;
+int numberOfCycles = 1;
+
+for (int h = 0; h < input.Length; h++)
 {
-    if (input[cycle].StartsWith("addx"))
+    if (input[h].StartsWith("addx"))
     {
-        string[] splitInstruction = input[cycle].Split(' ');
-
-        if (int.TryParse(splitInstruction[1], out int V))
-        {
-            // Do stuff with V 
-        }
-        else
-        {
-            throw new Exception("Bad instruction. Could not parse value.");
-        }
-
-
-        // split and use int to alter register value
+        numberOfCycles += 2;
     }
     else
     {
-        // noop... 
+        numberOfCycles++;
     }
+}
 
-    Console.WriteLine(input[cycle]);
+int[] registerX = new int[numberOfCycles];
+
+int cycle = 0;
+
+for (int i = 0; i < input.Length; i++)
+{
+    if (input[i].StartsWith("addx"))
+    {
+        registerX[cycle] = registerXValue;
+        cycle++;
+        registerX[cycle] = registerXValue;
+        cycle++;
+
+        string[] splitInstruction = input[i].Split(' ');
+
+        if (int.TryParse(splitInstruction[1], out int V))
+        {
+            registerXValue += V;
+        }
+        else
+        {
+            throw new Exception("Bad instruction (could not parse V value)");
+        }
+    }
+    else
+    {
+        registerX[cycle] = registerXValue;
+        cycle++;
+    }
+}
+
+registerX[cycle] = registerXValue;
+
+foreach (int value in registerX)
+{
+    Console.Write(value + " ");
 }
 
 Console.Write("\n");
