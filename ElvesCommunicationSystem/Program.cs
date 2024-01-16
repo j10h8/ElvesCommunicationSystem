@@ -1,5 +1,5 @@
 ﻿// Read values from input file and store in array 
-string[] input = File.ReadAllLines("..\\..\\..\\Input\\ExampleInput.txt");
+string[] input = File.ReadAllLines("..\\..\\..\\Input\\input.txt");
 
 #region Determine number of cycles that input generates, and create array based on result 
 int numberOfCycles = 0;
@@ -64,20 +64,22 @@ while (j < 220)
 #endregion
 
 #region Print result to console 
-//for (int c = 0; c < registerX.Length; c++)
-//{
-//    Console.WriteLine($"{c + 1} {registerX[c]}");
-//}
+for (int c = 0; c < registerX.Length; c++)
+{
+    Console.WriteLine($"{c + 1} {registerX[c]}");
+}
 
 Console.Write("\n");
-Console.WriteLine("  " + registerX[19] * 20);
-Console.WriteLine("  " + registerX[59] * 60);
-Console.WriteLine("  " + registerX[99] * 100);
-Console.WriteLine("  " + registerX[139] * 140);
-Console.WriteLine("  " + registerX[179] * 180);
-Console.WriteLine("  " + registerX[219] * 220);
-Console.WriteLine("+_____");
-Console.WriteLine(" " + sumOfSignalStrengths);
+
+int d = 20;
+while (d <= 220)
+{
+    Console.WriteLine("  " + registerX[d - 1] * d + $" ({registerX[d - 1]} * {d})");
+    d = d + 40;
+}
+
+Console.WriteLine("+ _______________");
+Console.WriteLine("  " + sumOfSignalStrengths);
 Console.Write("\n");
 Console.WriteLine("Press any key to exit.");
 Console.ReadKey();
