@@ -119,11 +119,11 @@
             int[] register = CreateRegister(ReadDataInput(fileName));
             int sumOfSignalStrengths = GetSumOfSignalStrengths(register);
 
-            //// Print X value at each cycle 
-            //for (int c = 0; c < register.Length; c++)
-            //{
-            //    Console.WriteLine($"{c + 1} {register[c]}");
-            //}
+            // Print X value at each cycle 
+            for (int c = 0; c < register.Length; c++)
+            {
+                Console.WriteLine($"{c + 1} {register[c]}");
+            }
 
             Console.Write("\n");
 
