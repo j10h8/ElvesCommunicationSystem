@@ -119,15 +119,16 @@
             int[] register = CreateRegister(ReadDataInput(fileName));
             int sumOfSignalStrengths = GetSumOfSignalStrengths(register);
 
-            // Print X value at each cycle 
-            for (int c = 0; c < register.Length; c++)
-            {
-                Console.WriteLine($"{c + 1} {register[c]}");
-            }
+            //// For checking values. Prints X value at each cycle. 
+            //for (int c = 0; c < register.Length; c++)
+            //{
+            //    Console.WriteLine($"{c + 1} {register[c]}");
+            //}
 
-            Console.Write("\n");
+            Console.WriteLine();
 
             int d = 20;
+
             while (d <= 220)
             {
                 Console.WriteLine("  " + register[d - 1] * d + $" ({register[d - 1]} * {d})");
@@ -136,7 +137,69 @@
 
             Console.WriteLine("+ _______________");
             Console.WriteLine("  " + sumOfSignalStrengths);
-            Console.Write("\n");
+            Console.WriteLine();
+            Console.WriteLine($"The sum of the signal strengths is {sumOfSignalStrengths}");
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Prints screen "pixels" based on the provided input file(name). 
+        /// </summary>
+        /// <param name="fileName">A string corresponding to the name of the input file.</param>
+        internal void PrintScreen(string fileName)
+        {
+            char[] screenPixels = new char[240];
+            int[] register = CreateRegister(ReadDataInput(fileName));
+
+            int j = 0;
+
+            for (int i = 0; i < screenPixels.Length; i++)
+            {
+                switch (i)
+                {
+                    case 40:
+                        j = 40;
+                        break;
+                    case 80:
+                        j = 80;
+                        break;
+                    case 120:
+                        j = 120;
+                        break;
+                    case 160:
+                        j = 160;
+                        break;
+                    case 200:
+                        j = 200;
+                        break;
+                    default:
+                        break;
+                }
+
+                if (register[i] == i - j || register[i] == i + 1 - j || register[i] == i - 1 - j)
+                {
+                    screenPixels[i] = '#';
+                }
+                else
+                {
+                    screenPixels[i] = '.';
+                }
+            }
+
+            Console.WriteLine("The provided input/instructions generates the following screen:");
+            Console.WriteLine();
+
+            for (int i = 0; i < screenPixels.Length; i++)
+            {
+                Console.Write(screenPixels[i]);
+
+                if ((i + 1) % 40 == 0)
+                {
+                    Console.WriteLine();
+                }
+            }
+
+            Console.WriteLine();
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
         }
