@@ -186,7 +186,7 @@
                 }
             }
 
-            Console.WriteLine("The provided input/instructions generates the following screen:");
+            Console.WriteLine("The provided instructions input generates the following screen:");
             Console.WriteLine();
 
             for (int i = 0; i < screenPixels.Length; i++)
